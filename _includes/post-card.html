@@ -1,0 +1,17 @@
+<article class="post-item">
+  <header class="post-item-header">
+    <h2 class="post-item-title"><a href="{{ include.post.url | relative_url }}">{{ include.post.title | escape }}</a></h2>
+  </header>
+  <div class="post-item-excerpt">
+    <p>{% if include.post.description %}{{ include.post.description | escape }}{% else %}{{ include.post.excerpt | strip_html | strip_newlines | truncatewords: 35 }}{% endif %}</p>
+  </div>
+  <footer class="post-item-footer">
+    <ul class="post-item-meta-list">
+      <li class="post-item-meta-item"><time datetime="{{ include.post.date | date: '%Y-%m-%d' }}">{{ include.post.date | date: '%-d %b %Y' }}</time></li>
+      {% if include.post.tags.size > 0 %}
+        {% assign first_tag = include.post.tags | first %}
+        <li class="post-item-meta-item"><a href="{{ '/tags/' | relative_url }}#{{ first_tag | slugify }}">{{ first_tag | escape }}</a></li>
+      {% endif %}
+    </ul>
+  </footer>
+</article>

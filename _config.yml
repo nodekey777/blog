@@ -1,0 +1,26 @@
+title: Ghostium
+description: A quiet place to write and read.
+lang: en
+url: "https://nodekey777.github.io"
+baseurl: "blog"
+permalink: /:title/
+timezone: Asia/Shanghai
+cover_image: ""
+logo: ""
+author:
+  name: Your name
+  bio: ""
+  avatar: ""
+  url: ""
+paginate: 8
+paginate_path: "/page/:num/"
+excerpt_separator: "<!--more-->"
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+exclude:
+  - vendor
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE

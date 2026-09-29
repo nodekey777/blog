@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<section class="wrapper wrapper-post">
+  <div class="wrapper-container">
+    <article class="post" itemscope itemtype="https://schema.org/WebPage">
+      <section class="post-container">
+        <header class="post-header">
+          <h1 class="post-title" itemprop="name">{{ page.title | escape }}</h1>
+          {% if page.description %}<p class="post-subtitle">{{ page.description | escape }}</p>{% endif %}
+        </header>
+        <div class="post-body" itemprop="mainContentOfPage">{{ content }}</div>
+      </section>
+    </article>
+    {% include footer.html %}
+  </div>
+</section>

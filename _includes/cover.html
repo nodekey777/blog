@@ -1,0 +1,16 @@
+<aside class="cover" aria-label="Site introduction">
+  {% if site.cover_image and site.cover_image != '' %}
+    <img class="cover-image" src="{{ site.cover_image | relative_url }}" alt="">
+  {% else %}
+    <div class="cover-image"></div>
+  {% endif %}
+  <div class="cover-container">
+    {% if site.logo and site.logo != '' %}
+      <a href="{{ '/' | relative_url }}" class="cover-logo" aria-label="{{ site.title | escape }} home">
+        <img src="{{ site.logo | relative_url }}" alt="">
+      </a>
+    {% endif %}
+    <h1 class="cover-title">{{ site.title | escape }}</h1>
+    <p class="cover-description">{{ site.description | escape }}</p>
+  </div>
+</aside>

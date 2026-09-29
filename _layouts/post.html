@@ -1,0 +1,63 @@
+---
+layout: default
+---
+<section class="wrapper wrapper-post">
+  <div class="wrapper-container">
+    <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+      <section class="post-container">
+        <header class="post-header">
+          <ul class="post-meta-list">
+            <li class="post-meta-item"><time datetime="{{ page.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ page.date | date: '%-d %b %Y' }}</time></li>
+            {% if page.tags.size > 0 %}
+              {% assign first_tag = page.tags | first %}
+              <li class="post-meta-item"><a href="{{ '/tags/' | relative_url }}#{{ first_tag | slugify }}">{{ first_tag | escape }}</a></li>
+            {% endif %}
+          </ul>
+          <h1 class="post-title" itemprop="headline">{{ page.title | escape }}</h1>
+          {% if page.description %}<p class="post-subtitle">{{ page.description | escape }}</p>{% endif %}
+        </header>
+        <aside class="post-side">
+          <div class="post-author">
+            {% if site.author.avatar and site.author.avatar != '' %}
+              {% if site.author.url and site.author.url != '' %}
+                <a class="post-author-avatar" href="{{ site.author.url | escape }}"><img src="{{ site.author.avatar | relative_url }}" alt=""></a>
+              {% else %}
+                <a class="post-author-avatar" href="{{ '/about/' | relative_url }}"><img src="{{ site.author.avatar | relative_url }}" alt=""></a>
+              {% endif %}
+            {% endif %}
+            <div class="post-author-info">
+              <span class="post-author-name">{{ site.author.name | escape }}</span>
+              {% if site.author.bio %}<p class="post-author-bio">{{ site.author.bio | escape }}</p>{% endif %}
+            </div>
+          </div>
+        </aside>
+        {% if page.image %}
+          <figure class="post-feature">
+            <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}">
+            {% if page.image_caption %}<figcaption>{{ page.image_caption | escape }}</figcaption>{% endif %}
+          </figure>
+        {% endif %}
+        <div class="post-body" itemprop="articleBody">{{ content }}</div>
+        <footer class="post-footer">
+          <div class="post-author">
+            {% if site.author.avatar and site.author.avatar != '' %}
+              <span class="post-author-avatar"><img src="{{ site.author.avatar | relative_url }}" alt=""></span>
+            {% endif %}
+            <div class="post-author-info">
+              <h2 class="post-footer-heading">Written by</h2>
+              <span class="post-author-name">{{ site.author.name | escape }}</span>
+              {% if site.author.bio %}<p class="post-author-bio">{{ site.author.bio | escape }}</p>{% endif %}
+              <p class="post-info"><strong class="post-info-title">Published on</strong><time class="post-date" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%-d %B %Y' }}</time></p>
+            </div>
+          </div>
+          <div class="post-social">
+            <h2 class="post-footer-heading">Share this post</h2>
+            <button type="button" data-share="native">Share</button>
+            <button type="button" data-share="copy">Copy link</button>
+          </div>
+        </footer>
+      </section>
+    </article>
+    {% include footer.html %}
+  </div>
+</section>

@@ -1,0 +1,12 @@
+<button id="drawer-button" class="drawer-button" type="button" aria-label="Open menu" aria-controls="site-drawer" aria-expanded="false" data-open-drawer>☰</button>
+<nav id="site-drawer" class="drawer" aria-label="Main navigation" aria-hidden="true">
+  <div class="drawer-container">
+    <button class="drawer-close" type="button" aria-label="Close menu" data-close-drawer>×</button>
+    <ul class="nav">
+      {% for item in site.data.navigation %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.label | escape }}</a></li>
+      {% endfor %}
+    </ul>
+    <div class="drawer-feed"><a href="{{ '/feed.xml' | relative_url }}">RSS feed</a></div>
+  </div>
+</nav>

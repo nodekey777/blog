@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{% include cover.html %}
+<section class="wrapper" aria-label="Recent posts">
+  <div class="wrapper-container">
+    <section class="post-list">
+      {% if paginator %}
+        {% assign visible_posts = paginator.posts %}
+      {% else %}
+        {% assign visible_posts = site.posts %}
+      {% endif %}
+      {% for post in visible_posts %}
+        {% include post-card.html post=post %}
+      {% else %}
+        <p>No posts yet. Add a Markdown file to <code>_posts</code> to begin.</p>
+      {% endfor %}
+    </section>
+    {% if paginator.total_pages > 1 %}
+      <nav class="post-list-pagination" aria-label="Pages">
+        {% if paginator.previous_page %}
+          <a class="post-list-pagination-item post-list-pagination-item-prev" href="{{ paginator.previous_page_path | relative_url }}">Newer</a>
+        {% endif %}
+        <span class="post-list-pagination-item post-list-pagination-item-current">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+        {% if paginator.next_page %}
+          <a class="post-list-pagination-item post-list-pagination-item-next" href="{{ paginator.next_page_path | relative_url }}">Older</a>
+        {% endif %}
+      </nav>
+    {% endif %}
+    {% include footer.html %}
+  </div>
+</section>
